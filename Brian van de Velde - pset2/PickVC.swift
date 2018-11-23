@@ -16,7 +16,6 @@ class PickVC: UIViewController
     @IBOutlet weak var clothesButton: UIButton!
     @IBOutlet weak var dancingButton: UIButton!
     
-    var storyChoice = ""
     var story: Story!
     
     override func viewDidLoad()
@@ -58,6 +57,6 @@ class PickVC: UIViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         let started = segue.destination as! StartedVC
-        started.chosenStory = storyChoice
+        started.story = story
     }
 }

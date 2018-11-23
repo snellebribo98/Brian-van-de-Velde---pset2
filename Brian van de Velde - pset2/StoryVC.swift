@@ -10,8 +10,8 @@ import UIKit
 
 class StoryVC: UIViewController
 {
-    @IBOutlet weak var story: UILabel!
-    let storie = Story(withText: String())
+    @IBOutlet weak var storyLabel: UILabel!
+    var story: Story!
     
     @IBAction func returnPressed(_ sender: Any)
     {
@@ -21,7 +21,7 @@ class StoryVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        story.text = storie.normalText
-        story.sizeToFit()
+        storyLabel.text = story.normalText
+        storyLabel.sizeToFit()
     }
 }

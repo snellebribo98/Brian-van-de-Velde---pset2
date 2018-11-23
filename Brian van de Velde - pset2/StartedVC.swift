@@ -17,22 +17,20 @@ class StartedVC: UIViewController
    
     var story: Story!
     var stor = String()
-    var chosenStory = String()
-    lazy var tekst = Story.init(withText: "\(chosenStory)")
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        remainingWords.text = "\(tekst.totalPlaceholders) word(s) left"
-        typeWord.placeholder = "\(tekst.nextPlaceholder!)"
-        wordType.text = "Please type a/an \(tekst.nextPlaceholder!)"
+        remainingWords.text = "\(story.totalPlaceholders) word(s) left"
+        typeWord.placeholder = "\(story.nextPlaceholder!)"
+        wordType.text = "Please type a/an \(story.nextPlaceholder!)"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        //let st = segue.destination as! StoryVC
-        //st.storie = chosenStory
+        let verhaal = segue.destination as! StoryVC
+        verhaal.story = story
     }
     
     @IBAction func okPressed(_ sender: UIButton)
@@ -47,10 +45,10 @@ class StartedVC: UIViewController
         }
         else
         {
-            tekst.fillInPlaceholder(word: wordType.text!)
-            if tekst.isFilledIn
+            story.fillInPlaceholder(word: wordType.text!)
+            if story.isFilledIn
             {
-                stor = tekst.normalText
+                stor = story.normalText
                 performSegue(withIdentifier: "storySegue", sender: proceed)
             }
             else
@@ -62,10 +60,10 @@ class StartedVC: UIViewController
     
     func updateScreen()
     {
-        remainingWords.text = "\(tekst.remainingPlaceholders) word(s) left"
-        typeWord.placeholder = "\(tekst.nextPlaceholder!)"
+        remainingWords.text = "\(story.remainingPlaceholders) word(s) left"
+        typeWord.placeholder = "\(story.nextPlaceholder!)"
         typeWord.text = ""
-        wordType.text = "Please type a/an \(tekst.nextPlaceholder!)"
+        wordType.text = "Please type a/an \(story.nextPlaceholder!)"
     }
     
 }
