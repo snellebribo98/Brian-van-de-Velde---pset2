@@ -45,7 +45,7 @@ class StartedVC: UIViewController
         }
         else
         {
-            story.fillInPlaceholder(word: wordType.text!)
+            story.fillInPlaceholder(word: typeWord.text!)
             if story.isFilledIn
             {
                 stor = story.normalText
@@ -64,6 +64,11 @@ class StartedVC: UIViewController
         typeWord.placeholder = "\(story.nextPlaceholder!)"
         typeWord.text = ""
         wordType.text = "Please type a/an \(story.nextPlaceholder!)"
+        
+        if story.remainingPlaceholders == 1
+        {
+            proceed.setTitle("Finish", for: .normal)
+        }
     }
     
 }
