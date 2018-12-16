@@ -23,6 +23,7 @@ class PickVC: UIViewController
         super.viewDidLoad()
     }
     
+    // if story button pressed, retrieve the info of that story
     @IBAction func storyPressed(_ sender: UIButton)
     {
         switch sender

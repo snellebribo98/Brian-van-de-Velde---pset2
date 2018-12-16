@@ -16,8 +16,9 @@ class StartedVC: UIViewController
     @IBOutlet weak var proceed: UIButton!
    
     var story: Story!
-    var stor = String()
+    var stor: NSAttributedString?
     
+    // initial screen
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class StartedVC: UIViewController
         verhaal.story = story
     }
     
+    // retrieves the word you entered so it can fill in the gaps in the story
     @IBAction func okPressed(_ sender: UIButton)
     {
         if typeWord.text == ""
@@ -48,7 +50,7 @@ class StartedVC: UIViewController
             story.fillInPlaceholder(word: typeWord.text!)
             if story.isFilledIn
             {
-                stor = story.normalText
+                stor = story.attributedText
                 performSegue(withIdentifier: "storySegue", sender: proceed)
             }
             else
@@ -58,6 +60,7 @@ class StartedVC: UIViewController
         }
     }
     
+    // updated screen after a word is given
     func updateScreen()
     {
         remainingWords.text = "\(story.remainingPlaceholders) word(s) left"

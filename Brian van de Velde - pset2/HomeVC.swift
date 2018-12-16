@@ -16,6 +16,8 @@ class HomeVC: UIViewController
         self.performSegue(withIdentifier: "pickSegue", sender: self)
     }
     
+    @IBAction func unwindToStart(segue:UIStoryboardSegue) {}
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

@@ -14,14 +14,13 @@ class StoryVC: UIViewController
     var story: Story!
     
     @IBAction func returnPressed(_ sender: Any)
-    {
-        self.performSegue(withIdentifier: "returnSegue", sender: self)
-    }
+    {}
     
+    // loads screen with the story, filled in words, bold
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        storyLabel.text = story.normalText
+        storyLabel.attributedText = story.attributedText
         storyLabel.sizeToFit()
     }
 }
